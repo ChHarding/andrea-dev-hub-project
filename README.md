@@ -9,7 +9,7 @@ This project is a prototype developer hub that helps users learn about available
   - `catalog.json` - finance API products shown in the catalog
   - `api_specs.json` - simplified API operations per product
   - `requests.json` - saved credential requests (created/updated by the app)
-- `docs/` - project specification and sketch PDFs
+- `docs/` - project spec (original and revised), V1 sketch, and Version 1 review (PDF + Word); `docs/img/` holds the review screenshots
 - `bugs.md` - running list of known bugs and how to reproduce them
 - `hello.py`, `hello_CH.py` - earlier GitHub-workflow practice files
 
