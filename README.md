@@ -2,9 +2,22 @@
 
 This project is a prototype developer hub that helps users learn about available APIs and the steps required to use them
 
+## How to run
+
+```
+pip install -r requirements.txt
+streamlit run app.py        # Version 2 web app
+python main.py              # command-line version
+python -m unittest test_hub_logic   # unit tests
+```
+
 ## Project layout
 
-- `main.py` - the Version 1 command-line app. Run with `python main.py`.
+- `app.py` - the Version 2 Streamlit app (Home, API Catalog, Request Credentials, Check Request Status, Admin Review). Pages are built with `st.navigation` in one file, so there is no `pages/` folder.
+- `hub_logic.py` - shared "logic" functions (load data, search, validate, save, review). No `print()`/`input()`, so both apps can use them.
+- `main.py` - the command-line version of the app. Run with `python main.py`.
+- `test_hub_logic.py` - unit tests for `hub_logic.py`.
+- `requirements.txt` - Python packages needed (Streamlit).
 - `data/` - local JSON files used as the app's data store:
   - `catalog.json` - finance API products shown in the catalog
   - `api_specs.json` - simplified API operations per product
@@ -15,9 +28,9 @@ This project is a prototype developer hub that helps users learn about available
 
 ## Credential request statuses
 
-1. **Submitted** - request saved after passing validation
-2. **Needs Information** - review found the API guide wasn't reviewed or there is no technical contact
-3. **Credentials Available** - review passed; a sample (fake) key is shown, masked
+1. **Submitted** - request saved after passing validation; waiting for an admin
+2. **Needs Information** - the admin sent it back with a note explaining what is missing
+3. **Credentials Available** - the admin approved it; a sample (fake) key is shown, masked, with an option to reveal it
 
-Use *Request Credentials → View existing request* with your request ID to run the simulated review.
+The review is done on the **Admin Review** page (or menu option 3 in `main.py`). The suggested note only mentions the readiness answers that were "no". Requesters check their status with their request ID.
 
